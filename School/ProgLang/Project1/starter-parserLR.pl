@@ -47,6 +47,9 @@ goto(4,non(t,_),6).
 % extension of the grammar which computes the value of the expression.
 
 attribute(1,[non(e,A),non(e,A1),term(minus,_),non(t,A2)]):- % YOUR CODE HERE
+attribute(2,[non(e,A),non(t,A1)]).
+attribute(3,[non(t,A),non(t,A1),term(mul,_),term(num,A2)]).
+attribute(4,[non(t,A),term(num,A1)]).
 
 % YOUR CODE HERE.
 % As with the LL(1) parser, begin with transform(L,R).
