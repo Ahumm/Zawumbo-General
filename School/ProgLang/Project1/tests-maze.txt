@@ -1,0 +1,84 @@
+% Test case 1:
+
+pway(a, b, 10).
+pway(b, c, 15).
+pway(d, c, 5).
+pway(d, b, 10).
+
+% Part 1.
+
+?- solve(a,d,P,N).
+P = [a, b, d],
+N = 20 ;
+P = [a, b, c, d],
+N = 30 ;
+false.
+
+?- solve(c,a,P,N).
+P = [c, b, a],
+N = 25 ;
+P = [c, d, b, a],
+N = 25 ;
+false.
+
+% Part 2.
+
+?- solveSorted(a,d,P,N).
+P = [a, b, d],
+N = 20 ;
+P = [a, b, c, d],
+N = 30 ;
+false.
+
+?- solveSorted(c,a,P,N).
+P = [c, b, a],
+N = 25 ;
+P = [c, d, b, a],
+N = 25 ;
+false.
+
+
+% Test case 2:
+
+pway(a, b, 10).
+pway(b, c, 15).
+pway(d, c, 5).
+pway(d, b, 10).
+
+pway(b, e, 7).
+pway(e, c, 8).
+
+pway(d, f, 5).
+pway(c, f, 5). 
+
+% Part 1:
+
+?- solve(a,d,P,N).
+P = [a, b, d],
+N = 20 ;
+P = [a, b, c, d],
+N = 30 ;
+P = [a, b, c, f, d],
+N = 35 ;
+P = [a, b, e, c, d],
+N = 30 ;
+P = [a, b, e, c, f, d],
+N = 35 ;
+false.
+
+% Part 2:
+
+?- solveSorted(a,d,P,N).
+P = [a, b, d],
+N = 20 ;
+P = [a, b, c, d],
+N = 30 ;
+P = [a, b, e, c, d],
+N = 30 ;
+P = [a, b, c, f, d],
+N = 35 ;
+P = [a, b, e, c, f, d],
+N = 35 ;
+false.
+
+

@@ -1,0 +1,46 @@
+
+% TO AVOID THE LIMIT ON LIST OUTPUT USE:
+% set_prolog_flag(toplevel_print_options, [quoted(true), portray(true), max_depth(0), attributes(portray)]). 
+
+
+% sample inputs
+input0([3,-,5]).
+input1([3,-,5,*,7,-,18]).
+input2([1,-,5,*,7,*,2,-,10]).
+input3([1,+,9]).
+input4([100,-,1,*,2,*,3,-4,*,5,-,6,-,7,*,10,*,11,*,12]).
+input5([100,-,1,*,2,*,3,-,4,*,5,-,6,-,7,*,10,*,11,*,12]).
+
+
+
+[debug]  ?- input0(L),parseLL(L,ProdSeq).
+L = [3,-,5],
+ProdSeq = [1,4,6,2,4,6,3] ;
+false.
+
+
+[debug]  ?- input1(L),parseLL(L,ProdSeq).
+L = [3,-,5,*,7,-,18],
+ProdSeq = [1,4,6,2,4,5,6,2,4,6,3] ;
+false.
+
+
+[debug]  ?- input2(L),parseLL(L,ProdSeq).
+L = [1,-,5,*,7,*,2,-,10],
+ProdSeq = [1,4,6,2,4,5,5,6,2,4,6,3] ;
+false.
+
+
+[debug]  ?- input3(L),parseLL(L,ProdSeq).
+false.
+
+
+[debug]  ?- input4(L),parseLL(L,ProdSeq).
+false.
+
+
+[debug]  ?- input5(L),parseLL(L,ProdSeq).
+L = [100,-,1,*,2,*,3,-,4,*,5,-,6,-,7,*,10,*,11,*,12],
+ProdSeq = [1,4,6,2,4,5,5,6,2,4,5,6,2,4,6,2,4,5,5,5,6,3] ;
+false.
+
