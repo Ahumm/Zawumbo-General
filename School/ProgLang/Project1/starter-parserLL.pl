@@ -61,18 +61,3 @@ transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
 parseLL([H|T],ProdSeq) :- .
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

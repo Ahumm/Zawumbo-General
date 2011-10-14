@@ -66,19 +66,3 @@ transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
 % ProdSeq = [1, 4, 2, 4]
 % V = -2.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
