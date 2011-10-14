@@ -29,14 +29,21 @@ prod(6,[non(tprime,_),term(eps,_)]).
 expand(non(e,_),term(num,_),1).
 expand(non(eprime,_),term(minus,_),2).
 expand(non(eprime,_),term(end,_),3).
+expand(non(eprime,_),term(eps,_),3).
 expand(non(t,_),term(num,_),4).
 expand(non(tprime,_),term(mul,_),5).
 expand(non(tprime,_),term(minus,_),6).
 expand(non(tprime,_),term(end,_),6).
+expand(non(tprime,_),term(eps,_),6).
 
 % sample inputs
 input0([3,-,5]).
 input1([3,-,5,*,7,-,18]).
+input2([1,-,5,*,7,*,2,-,10]).
+input2([1,-,5,*,7,*,2,-,10]).
+input3([1,+,9]).
+input4([100,-,1,*,2,*,3,-4,*,5,-,6,-,7,*,10,*,11,*,12]).
+input5([100,-,1,*,2,*,3,-,4,*,5,-,6,-,7,*,10,*,11,*,12]).
 
 
 % YOUR CODE HERE.
@@ -48,9 +55,10 @@ input1([3,-,5,*,7,-,18]).
 % R = [term(num,3),term(minus,_),term(num,5),term(end,_)]
 
 transform([],R) :- append([term(end,_)],[],R).
-transform([-|Tail],R) :- transform(Tail, S), append([term(minus,_)],S,R).
-transform([*|Tail],R) :- transform(Tail, S), append([term(mul,_)],S,R).
-transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
+transform([-|Tail],R) :- transform(Tail, S),append([term(minus,_)],S,R).
+transform([*|Tail],R) :- transform(Tail, S),append([term(mul,_)],S,R).
+transform([H|Tail],R) :- transform(Tail, S),integer(H),append([term(num,H)],S,R).
+transform([H|Tail],R) :- transform(Tail, S),H=[],append([term(eps,_)],S,R).
 
 
 % Write parseLL(L,ProdSeq): it takes input list L and produces the
@@ -58,6 +66,11 @@ transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
 % E.g., input0(L),parseLL(L,ProdSeq).
 % ProdSeq = [1, 4, 6, 2, 4, 6, 3].
 
-parseLL([H|T],ProdSeq) :- .
+parseLL(List,ProdSeq) :- transform(List, TransformedList), workThrough(TransformedList, [non(e,_)], ProdSeq).
+
+workThrough([IHead|ITail], [IHead|PTail], R) :- workThrough(ITail,PTail,R).
+workThrough(IList, [term(eps,_)|PTail], R) :- workThrough(IList,PTail,R).
+workThrough([IHead|ITail], [PHead|PTail], R) :- expand(PHead,IHead,Prod), prod(Prod,[_|NPTail]), append(NPTail, PTail, NStack), workThrough([IHead|ITail], NStack, X), append([Prod],X, R).
+workThrough([term(end,_)|_], [], []).
 
 

@@ -57,7 +57,8 @@ attribute(4,[non(t,A),term(num,A1)]).
 transform([],R) :- append([term(end,_)],[],R).
 transform([-|Tail],R) :- transform(Tail, S), append([term(minus,_)],S,R).
 transform([*|Tail],R) :- transform(Tail, S), append([term(mul,_)],S,R).
-transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
+transform([H|Tail],R) :- transform(Tail, S),integer(H),append([term(num,H)],S,R).
+transform([H|Tail],R) :- transform(Tail, S),H=[],append([term(eps,_)],S,R).
 
 % Write parseLR(L,ProdSeq,V): it takes input list L and produces the
 % production sequence applied by the shift-reduce parser in reverse.
@@ -65,4 +66,14 @@ transform([A|Tail],R) :- transform(Tail, S), append([term(num,A)],S,R).
 % input0(L),parseLR(L,ProdSeq, V).
 % ProdSeq = [1, 4, 2, 4]
 % V = -2.
+parseLR(List,ProdSeq, V) :- transform(List, TransformedList), workThrough(TransformedList, [non(e,_)], ProdSeq).
+
+workThrough([IHead|ITail], [IHead|PTail], R) :- workThrough(ITail,PTail,R).
+workThrough(IList, [term(eps,_)|PTail], R) :- workThrough(IList,PTail,R).
+workThrough([IHead|ITail], [PHead|PTail], R) :- expand(PHead,IHead,Prod), prod(Prod,[_|NPTail]), append(NPTail, PTail, NStack), workThrough([IHead|ITail], NStack, X), append([Prod],X, R).
+workThrough([term(end,_)|_], [], []).
+
+
+
+
 
