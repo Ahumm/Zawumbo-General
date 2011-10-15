@@ -1,13 +1,6 @@
 % Representation for production is analogous to that
 % in Problem 1. 
 
-input0([3,-,5]).
-input1([3,-,5,*,7,-,18]).
-input2([1,-,5,*,7,*,2,-,10]).
-input3([1,+,9]).
-input4([100,-,1,*,2,*,3,-4,*,5,-,6,-,7,*,10,*,11,*,12]).
-input5([100,-,1,*,2,*,3,-,4,*,5,-,6,-,7,*,10,*,11,*,12]).
-
 prod(1,[non(e,_),non(t,_),term(minus,_),non(e,_)]).
 prod(2,[non(e,_),non(t,_)]).
 prod(3,[non(t,_),term(num,_),term(mul,_),non(t,_)]).
@@ -55,9 +48,9 @@ goto(4,non(t,_),6).
 % Complete the attribute table. Predicates attribute() encode the
 % extension of the grammar which computes the value of the expression.
 
-attribute(1,[non(e,A),non(e,A1),term(minus,_),non(t,A2)]):- A is A1 - A2.
+attribute(1,[non(e,A),non(t,A2),term(minus,_),non(e,A1)]):- A is A1 - A2.
 attribute(2,[non(e,A),non(t,A1)]) :- A is A1.
-attribute(3,[non(t,A),non(t,A1),term(mul,_),term(num,A2)]) :- A is A1 * A2.
+attribute(3,[non(t,A),term(num,A1),term(mul,_),non(t,A2)]) :- A is A1 * A2.
 attribute(4,[non(t,A),term(num,A1)]) :- A is A1.
 
 % YOUR CODE HERE.
@@ -72,22 +65,22 @@ transform([H|Tail],R) :- transform(Tail, S),H=[],append([term(eps,_)],S,R).
 % Write parseLR(L,ProdSeq,V): it takes input list L and produces the
 % production sequence applied by the shift-reduce parser in reverse.
 % E.g., if input0([3,-,5], 
-% input0(L),parseLR(L,ProdSeq, V).
+% input0(L),parseLR(L,ProdSeq, Val).
 % ProdSeq = [1, 4, 2, 4]
 % V = -2.
-parseLR(List,ProdSeq, V) :- transform(List,TransformedList), workThrough(TransformedList,[],[0],ProdSeq).
+parseLR(List,ProdSeq, Val) :- transform(List,TransformedList), workThrough(TransformedList,[],[0],ProdSeq,Val).
 
-workThrough([IHead|ITail],Stack,[HState|TState],Prod) :- action(HState,IHead,shift,NState),append([IHead],Stack,NStack),append([NState],[HState|TState], NSS),workThrough(ITail,NStack,NSS,Prod).
+workThrough([IHead|ITail],Stack,[HState|TState],Prod,Val) :- action(HState,IHead,shift,NState),append([IHead],Stack,NStack),append([NState],[HState|TState], NSS),workThrough(ITail,NStack,NSS,Prod,Val).
 
-workThrough([IHead|ITail],Stack,[HState|TState],Prod) :- action(HState,IHead,reduce,Reduct),prod(Reduct, [PResult|PMatch]), cull(Stack,[HState|TState],PMatch,SR,StateB),append([PResult],SR,NStack),gotoState([IHead|ITail],NStack,StateB,NProd),append(NProd,[Reduct],Prod).
+workThrough([IHead|ITail],Stack,[HState|TState],Prod,Val) :- action(HState,IHead,reduce,Reduct),prod(Reduct, [PResult|PMatch]), cull(Stack,[HState|TState],PMatch,SR,StateB),append([PResult],SR,NStack),attribute(Reduct,[PResult|PMatch]),gotoState([IHead|ITail],NStack,StateB,NProd,Val),append(NProd,[Reduct],Prod).
 
-cull([HStack|TStack],[HState|TState],[HStack|TProdMatch],RStack,RState) :- cull(TStack,TState,TProdMatch,RStack,RState).
+cull([HStack|TStack],[_|TState],[HStack|TProdMatch],RStack,RState) :- cull(TStack,TState,TProdMatch,RStack,RState).
 
 cull(RStack,RState, [], RStack,RState).
 
-gotoState(I, [HStack|TStack],[HState|TState],Prod) :- goto(HState,HStack,Dest),append([Dest],[HState|TState],NState),workThrough(I,[HStack|TStack],NState,Prod).
+gotoState(I, [HStack|TStack],[HState|TState],Prod,Val) :- goto(HState,HStack,Dest),append([Dest],[HState|TState],NState),workThrough(I,[HStack|TStack],NState,Prod,Val).
 
-gotoState([term(end,_)],[non(e,_)],State,Prod).
+gotoState([term(end,_)],[non(e,Val)],_,_,Val).
 
 
 
