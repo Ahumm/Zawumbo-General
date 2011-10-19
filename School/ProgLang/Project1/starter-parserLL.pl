@@ -36,15 +36,6 @@ expand(non(tprime,_),term(minus,_),6).
 expand(non(tprime,_),term(end,_),6).
 expand(non(tprime,_),term(eps,_),6).
 
-% sample inputs
-input0([3,-,5]).
-input1([3,-,5,*,7,-,18]).
-input2([1,-,5,*,7,*,2,-,10]).
-input2([1,-,5,*,7,*,2,-,10]).
-input3([1,+,9]).
-input4([100,-,1,*,2,*,3,-4,*,5,-,6,-,7,*,10,*,11,*,12]).
-input5([100,-,1,*,2,*,3,-,4,*,5,-,6,-,7,*,10,*,11,*,12]).
-
 
 % YOUR CODE HERE.
 % Write transform(L,R): it takes input list L and transforms it into a
