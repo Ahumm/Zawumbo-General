@@ -21,5 +21,6 @@ solve(X,Y,P,N,_) :- (pway(X,Y,L);pway(Y,X,L)),P=[X,Y],N is L.
 solve(X,Y,P,N,S) :- (pway(X,Z,L);pway(Z,X,L)),nonmember(Z,S),solve(Z,Y,NP,NL,[Z|S]),P=[X|NP],N is L + NL.
 
 
-solveSorted(X,Y,P,N) :- setof([N,S],solve(X,Y,S,N),F). 
+solveSorted(X,Y,P,N) :- setof([N,S],solve(X,Y,S,D),F), splitlist(F,[P|N],T), F:=T. 
 
+splitlist([H|T],H,T).
