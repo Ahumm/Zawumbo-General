@@ -1,0 +1,60 @@
+;; YOUR CODE HERE
+(define (myinterpreter x)
+  (my_e_map x '()))
+
+  
+;; Contract:   my_e_map : '(expr expr) -> '(value value)
+;; Purpose:    recursively evaluates all expressions in a list
+;; Example:    (my_e_map '(('myadd 1 1) ('mymul 2 3))) ought to produce (2 6)
+;; Definition: [refines the header]
+(define (my_e_map x binds)
+  (if (equal? x '()) '() (cons (myeval (car x) binds) (my_e_map (cdr x) binds))))
+ 
+;; Contract:   myeval : expr -> value
+;; Purpose:    evaluates an expression
+;; Example:    (myeval 1) ought to puroduce 1
+;; Definition: [refines the header]
+(define (myeval x binds)
+  (cond ((symbol? x) ;; Return value if set using mylet, else return the symbol
+            (if (equal? #f (lookupval x binds))
+               x
+               (lookup x binds)))
+        ((integer?) x) ;; Read a number
+        (else   ;; Evaluate the tokens
+           (evaltoks x binds))))
+
+;; Contract:   lookup : id -> value
+;; Purpose:    lookup a variable's value
+;; Example:    (lookup 'x '((x 1))) ought to produce 1
+;; Definition: [refines the header]
+(define (lookup symb binds)
+  (cond ((equal? binds '()) #f) ;; End of list found without finding variable, return #f
+        (else
+           (if (equal? (car (car binds)) symb)
+              (car (cdr (car binds))) ;; Symbol found in bindings, return value
+              (lookup 'symb (cdr binds)) ;; Look deeper
+            ))))
+
+;; Contract:   evaltoks : term expr expr? -> value
+;; Purpose:    Calculate the return value of a given expression
+;; Example:    (evaltoks '('myadd 1 1)) ought to produce 2
+;; Definition: [refines the header]
+(define (evaltoks x binds)
+   (cons ((equal? (myeval (car x) binds) 'myignore) 0) ;; Return 0 on myignore
+         ((equal? (myeval (car x) binds) 'myadd) ;; Add first two expressions in x recursively on myadd
+             (+ (myeval (car (cdr x)) binds) (myeval (car (cdr (cdr x))) x)))
+         ((equal? (myeval (car x) binds) 'mymul) ;; Multiply first two expressions in x recursively on mymul
+             (* (myeval (car (cdr x)) binds) (myeval (car (cdr (cdr x))) x)))
+         ((equal? (myeval (car x) binds) 'myneg) ;; Multiply first expression in x  by -1 recursively on myneg
+             (* (myeval (car (cdr x)) binds) -1))
+         ((equal? (myeval (car x) binds) 'mylet) ;; handle adding new variables to the binds list, messy due to handling scope issues
+             (myeval (car (cdr (cdr (cdr x)))) (cons (cons '() (car (cdr x)) (myeval (car (cdr (cdr x))) binds)) binds)))
+         ((equal? (myeval (car x) binds) 'prog) (myeval (car (cdr x)) binds)))) ;; Top of program, recurse
+
+(myinterpreter '(
+ (prog 5)
+ (prog (myadd (myadd 7 (myignore (mymul 4 5))) (mymul 2 5)))
+ (prog (mylet z (myadd 4 5) (mymul z 2)))
+ (prog (mylet a 66 (myadd (mylet b (mymul 2 4) (myadd 2 b)) (mymul 2 a))))
+ (prog (mylet x 66 (myadd (mylet x (mymul 2 4) (myadd 2 x)) (mymul 2 x))))
+))
