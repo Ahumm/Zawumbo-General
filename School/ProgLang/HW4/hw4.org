@@ -1,0 +1,55 @@
+#+TITLE:     Programming Languages Homework 4
+#+AUTHOR:    Tate Larsen
+#+DATE:      2011-11-22 Tue
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+LaTeX_Header: \usepackage{fullpage} \usepackage{listings} \lstset{language=C}
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+
+* Problem 1
+** a
+- S = \lambda xyz.(x z)(y z)
+- I = \lambda x.x
+- SIII = \lambda xyz.(x z)(y z) (\lambda x.x) (\lambda x.x) (\lambda x.x) = (\lambda x.x \lambda x.x) (\lambda x.x \lambda x.x) = \lambda x.x \lambda x.x = \lambda x.x = I
+** b
+- twice = \lambda fx.f(f x)
+- twice (twice) f x = twice (twice f) x = twice = twice f (twice f x) = twice f f(f(x)) = f(f(f(f x)))
+* Problem 2
+- Z = \lambda z. \lambda x.x(z z x)
+- ZZM = ((\lambda z. \lambda x.x(z z x))(\lambda z. \lambda x.x(z z x)))M =(\lambda x.x (\lambda z. \lambda x.x(z z x))(\lambda z. \lambda x.x(z z x)) x)M = M((\lambda z. \lambda x.x(z z x))(\lambda z. \lambda x.x(z z x))M) = M(ZZM)
+* Problem 3
+** Structural Equivalence
+- A = B = C = D
+** Strict Name Equivalence
+- A and B are compatible
+** Loose Name Equivalence
+- A, B, and C are compatible
+* Problem 4
+\begin{lstlisting}
+double *a[n];
+\end{lstlisting}
+- Array of n-many pointers to doubles
+\begin{lstlisting}
+double (*b)[n];
+\end{lstlisting}
+- Pointer to array of n-many doubles
+\begin{lstlisting}
+double (*c[n])();
+\end{lstlisting}
+- Array of n-many pointers to functions which return doubles
+\begin{lstlisting}
+double (*d())[n];
+\end{lstlisting}
+- Function which returns pointer to array of n-many doubles
+* Problem 5
+- foo is a function that takes in 1) a pointer to a function that takes in a double and array of doubles and returns a double and 2) a double and returns a pointer to a function that takes a double and "..." and returns a double.
+* Problem 6
+- Assume: s_i = sizeof(int)
+- Address of a[j][k,l] will be addr(a) + j * 25 * s_i + k * 5 * s_i + l * s_i
