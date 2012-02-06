@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<projects>
+  <project>
+    <id>wold</id>
+    <title>Wold</title>
+    <short_desc>A world simulation game</short_desc>
+    <long_desc>Project goal is to create an open world environment for the player to explore and affect. The player can attack and \"subjugate\" NPCs to build a following and form a control structure while the NPCs go about doing the same for various resources</long_desc>
+    
+    <type>Personal Project</type>
+    <contributor>
+      <href>http://paphus.com</href>
+      <name>Tom Alexander</name>
+    </contributor>
+    <contributor>
+      <name>Michael \"Chap\" Gruar</name>
+    </contributor>
+    
+    <started>Fall 2010</started>
+    <status>Still in the early stages with working OBJ model loading, camera movement functions, limited height map generation, lighting, and vertex buffer objects. Temporarily on hiatus</status>
+    
+    
+    <doc_href>http://wolddoc.paphus.com</doc_href>
+    <source_href>http://www.paphus.com/source/wold.zip</source_href>
+    <binary_href>http://www.paphus.com/binaries/wold.zip</binary_href>
+    <!-- 
+         <git_href>LINK</git_href>
+    -->
+    
+    <purpose>Learn and Implement Perlin Noise</purpose>
+    <purpose>Gain Experience working with a team</purpose>
+    
+    <skill>CMake</skill>
+    <skill>Git</skill>
+    <skill>Doxygen</skill>
+    <skill>Noise Algorithms</skill>
+    
+    <!--
+        <screenshot></screenshot>
+        <video></video>
+    -->
+  </project>
+  
+  <project>
+    <id>tumorraider</id>
+    <title>Tumor Raider</title>
+    <short_desc>Short Schmup</short_desc>
+    <long_desc>The assignment was to create a short shoot-em-up style game (Roughly 3 to 5 minutes) using pygame in two weeks. We decided to create a game where the player controls a nanobot traveling through the blood stream destroying various malignant cells. The player has a short shield and can improve their weapon temporarily</long_desc>
+    
+    <type>Academic - Game Development I</type>
+    
+    <contributor>
+      <name>Brett Kaplan</name>
+    </contributor>
+    <contributor>
+      <name>Jossued Rivera-Nazario</name>
+    </contributor>
+    <contributor>
+      <name>Peter Skinner</name>
+    </contributor>
+    
+    <started>Fall 2011</started>
+    <completed>Fall 2011</completed>
+    
+    <source_href>https://github.com/Ahumm/Tumor-Raider/zipball/master</source_href>
+    <git_href>https://github.com/Ahumm/Tumor-Raider/</git_href>
+    
+    <purpose>Learn the pygame module</purpose>
+    
+    <skill>Git</skill>
+    <skill>Pygame</skill>
+    <skill>Python</skill>
+    
+    <dependency>
+      <href>http://python.org/</href>
+      <name>Python 2.7</name>
+    </dependency>
+    <dependency>
+      <href>http://pygame.org/</href>
+      <name>Pygame</name>
+    </dependency>
+  </project>
+  
+  <project>
+    <id>bookofquakes</id>
+    <title>Book of Quakes</title>
+    <short_desc>A Mobile game based on the verbs \"Collapse\" and \"Find\"</short_desc>
+    <long_desc>The assignment was to create a game for Android using the Corona SDK besed on a pair of verbs drawn at random in two weeks. We drew the words \"Collapse\" and \"Find\" so we wrote a game wherein the player has the ability to create earthquakes by shaking the device and is attempting to destroy certain buildings in a city while leaving others intact</long_desc>
+    
+    <type>Academic - Game Development I</type>
+    
+    <contributor><name>Dan Hawkins</name></contributor>
+    <contributor><name>Marshall Hendrick</name></contributor>
+    <contributor><name>Ryan Knight</name></contributor>
+    <contributor><name>Alan Lummis</name></contributor>
+    
+    <started>Fall 2011</started>
+    <completed>Fall 2011</completed>
+    
+    <source_href>https://github.com/Ahumm/Book-of-Quakes/zipball/master</source_href>
+    <git_href>https://github.com/Ahumm/Book-of-Quakes/</git_href>
+    
+    <purpose>Learn the Corona SDK and LUA and gain an introduction to mobile game programming</purpose>
+    
+    <skill>Git</skill>
+    <skill>LUA</skill>
+    <skill>Corona SDK</skill>
+    <skill>Mobile Development</skill>
+    
+    <dependency>
+      <href>http://www.anscamobile.com/corona/</href>
+      <name>Corona SDK</name>
+    </dependency>
+  </project>
+  
+  <project>
+    <id>desertwasp</id>
+    <title>Desert W.A.S.P.</title>
+    <short_desc>A vehicle combat game</short_desc>
+    <long_desc>The assignment was to create a 3D vehicle combat game in 2 weeks with vehicle headlights. We made a relatively simple wave based tank survival game featuring an experimental hovercraft</long_desc>
+    
+    <type>Academic - Game Development I</type>
+    
+    <contributor>
+      <name>Ben Shippee</name>
+    </contributor>
+    <contributor>
+      <name>Phelan Lemieux</name>
+    </contributor>
+    <contributor>
+      <name>David Estrella</name>
+    </contributor>
+    <contributor>
+      <name>Randy Sabella</name>
+    </contributor>
+    
+    <started>Fall 2011</started>
+    <completed>Fall 2011</completed>
+    
+    <source_href>https://github.com/Ahumm/GD1P3/zipball/master</source_href>
+    <git_href>https://github.com/Ahumm/GD1P3/</git_href>
+    
+    <purpose>Learn Panda3D and 3D game programming basics</purpose>
+    
+    <skill>Git</skill>
+    <skill>Python</skill>
+    <skill>Panda3D</skill>
+    
+    <dependency>
+      <href>http://python.org/</href>
+      <name>Python 2.7</name>
+    </dependency>
+    <dependency>
+      <href>http://www.panda3d.org/</href>
+      <name>Panda3D</name>
+    </dependency>
+  </project>
+</projects>

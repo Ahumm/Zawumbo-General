@@ -1,0 +1,11 @@
+/* High Level */
+
+html {
+    background-color: #ffffff;
+    white-space:nowrap;
+}
+
+body {
+    font-family: 16px/1.4 "myriad-pro-1", "myriad-pro-2", "Lucida Grande", sans-serif;/*Geneva,"Lucida Sans","Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;*/
+    color:#333;
+}
