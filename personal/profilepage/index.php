@@ -299,7 +299,7 @@ $projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes"
 
 /*    About Me    */
 
-$aboutmeshort = "<center><img src=\"profile_pic.jpg\" width=200 height=280/></center><br><br>Hello and welcome to my portfolio site. My name is Tate Larsen and I am currently pursuing a dual degree in Computer Science and Games & Simulation Arts & Science (GSAS) at Rensselaer Polytechnic Institute.";
+$aboutmeshort = "<center><img src=\"img/profile_pic.jpg\" width=200 height=280/></center><br><br>Hello and welcome to my portfolio site. My name is Tate Larsen and I am currently pursuing a dual degree in Computer Science and Games & Simulation Arts & Science (GSAS) at Rensselaer Polytechnic Institute.";
 
 $aboutmefull = "<center><h4>Personal</h4></center>";
 $aboutmefull .= "<table>";
@@ -315,7 +315,7 @@ $aboutmefull .= "<table>";
 $aboutmefull .= "<tr><th align=right>College:</th><td>Rensselaer Polytechnic Institute</td></tr>";
 $aboutmefull .= "<tr><th align=right>Expected Graduation:</th><td>May 2013</td></tr>";
 $aboutmefull .= "<tr><th align=right>Majors:</th><td>Computer Science</br>Games & Simulation Arts & Sciences</td></tr>";
-$aboutmefull .= "<tr><th align=right>Status:</th><td>Deans's List</td></tr>";
+$aboutmefull .= "<tr><th align=right>Status:</th><td>Dean's List</td></tr>";
 $aboutmefull .= "</table>";
 
 $aboutmefull .= "<center><h4>Programming</h4></center>";
