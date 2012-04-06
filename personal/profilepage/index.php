@@ -6,7 +6,9 @@ $headright = "";
 $contentleft = "";
 $content = "";
 $contentright = "";
+$footerleft = "";
 $footer = "";
+$footerright = "";
 
 //Main function
 function printPage() {
@@ -15,14 +17,16 @@ function printPage() {
     
     //Start HTMLing
     echo "<html>";
-    echo "<head><title>" . $title . "</title></head>";
-    echo "<body><link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">";
+    echo "<head><link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\">";
+	echo "<title>" . $title . "</title>";
+	echo "</head>";
+    echo "<body class=\"bg-grad\">";
     
     //Main Stuff
     echo "<table id=\"sitetable\">";
     echo "<tr><td id=\"headerleft\">" . $headleft ."</td><td id=\"header\">" . $header . "</td><td id=\"headerright\">" . $headerright . "</td></tr>";
     echo "<tr><td id=\"contentleft\">" . $contentleft . "</td><td id=\"content\">" . $content . "</td><td id=\"contentright\">" . $contentright . "</td></tr>";
-    echo "<tr><td id=\"footerleft\"></td><td id=\"footer\">" . $footer . "</td><td id=\"footerright\"></td</tr>";
+    echo "<tr><td id=\"footerleft\">" . $footerleft . "</td><td id=\"footer\">" . $footer . "</td><td id=\"footerright\">" . $footerright . "</td></tr>";
 
     echo "</table>";
     
@@ -127,10 +131,7 @@ function addProjectScreenshots($project) {
 
     foreach($project["screenshots"] as $i) {
 	$ret .= "<a href=" . $i[0] . "><img src=" . $i[0] . " width=" . ($i[1] * $project["screenshotsscale"]) . " height=" . ($i[2] * $project["screenshotsscale"]) . " hspace=5 vspace=5 /></a>";
-	if($c == 1) {
-	    $ret .= "<br>";
-	}
-	$c = ($c + 1) % 2;
+	$ret .= "<br>";
     }
 
     $ret .= "</center>";
@@ -224,16 +225,16 @@ $wold["started"] = "Fall 2010";
 $wold["completed"] = false;
 $wold["contributors"] = array("<a href=http://paphus.com>Tom Alexander</a>", "Michael \"Chap\" Gruar");
 $wold["dochref"] = "http://wolddoc.paphus.com/";
-$wold["sourcehref"] = "http://www.paphus.com/source/wold.zip";
-$wold["binaryhref"] = "http://www.paphus.com/binaries/wold.zip";
+$wold["sourcehref"] = "http://tate.paphus.com/src/wold.zip";
+$wold["binaryhref"] = "http://tate.paphus.com/bin/wold.zip";
 $wold["githref"] = false;
 $wold["purpose"] = array("Learn and Implement Perlin Noise", "Gain Experience working with a team");
 $wold["skills"] = array("CMake", "Git", "Doxygen", "Noise Algorithms");
 $wold["requires"] = false;
 $wold["status"] = "Still in the early stages with working OBJ model loading, camera movement functions, limited height map generation, lighting, and vertex buffer objects. Temporarily on hiatus.";
 $wold["description"] = "Project goal is to create an open world environment for the player to explore and affect. The player can attack and \"subjugate\" NPCs to build a following and form a control structure while the NPCs go about doing the same for various resources.";
-$wold["screenshots"] = false;
-$wold["screenshotsscale"] = 1;
+$wold["screenshots"] = array(array("img/wold-1.png",960,718));
+$wold["screenshotsscale"] = 0.5;
 $wold["videos"] = false;
 
 $tumorraider["id"] = "tumorraider";
@@ -251,8 +252,8 @@ $tumorraider["skills"] = array("Git", "Pygame", "Python");
 $tumorraider["requires"] = array("<a href=http://python.org/>Python 2.7</a>", "<a href=http://pygame.org/>Pygame</a>");
 $tumorraider["status"] = "Completed";
 $tumorraider["description"] = "The assignment was to create a short shoot-em-up style game (Roughly 3 to 5 minutes) using pygame in two weeks. We decided to create a game where the player controls a nanobot traveling through the blood stream destroying various malignant cells. The player has a short shield and can improve their weapon temporarily ";
-$tumorraider["screenshots"] = false;
-$tumorraider["screenshotsscale"] = 1;
+$tumorraider["screenshots"] = array(array("img/tumorraider-1.png",800,600),array("img/tumorraider-2.png",800,600),array("img/tumorraider-3.png",800,600),array("img/tumorraider-4.png",800,600));
+$tumorraider["screenshotsscale"] = 0.6;
 $tumorraider["videos"] = false;
 
 $bookofquakes["id"] = "bookofquakes";
@@ -270,8 +271,8 @@ $bookofquakes["skills"] = array("Git", "LUA", "Corona SDK", "Mobile Development"
 $bookofquakes["status"] = "Completed";
 $bookofquakes["requires"] = array("<a href=http://www.anscamobile.com/corona/>Corona SDK</a>");
 $bookofquakes["description"] = "The assignment was to create a game for Android using the Corona SDK besed on a pair of verbs drawn at random in two weeks. We drew the words \"Collapse\" and \"Find\" so we wrote a game wherein the player has the ability to create earthquakes by shaking the device and is attempting to destroy certain buildings in a city while leaving others intact.";
-$bookofquakes["screenshots"] = false;
-$bookofquakes["screenshotsscale"] = 1;
+$bookofquakes["screenshots"] = array(array("img/bookofquakes-1.png",960,549),array("img/bookofquakes-2.png",960,549),array("img/bookofquakes-3.png",960,549),array("img/bookofquakes-4.png",960,549),array("img/bookofquakes-5.png",960,549),array("img/bookofquakes-6.png",960,549));
+$bookofquakes["screenshotsscale"] = 0.5;
 $bookofquakes["videos"] = false;
 
 $desertwasp["id"] = "desertwasp";
@@ -288,20 +289,41 @@ $desertwasp["purpose"] = array("Learn Panda3D and 3D game programming basics.");
 $desertwasp["skills"] = array("Git", "Python", "Panda3D");
 $desertwasp["status"] = "Completed";
 $desertwasp["requires"] = array("<a href=http://python.org/>Python 2.7</a>", "<a href=http://www.panda3d.org/>Panda3D</a>");
-$desertwasp["description"] = "The assignment was to create a 3D vehicle combat game in 2 weeks with vehicle headlights. We made a relatively simple wave based tank survival game featuring an experimental hovercraft.";
-$desertwasp["screenshots"] = false;
-$desertwasp["screenshotsscale"] = 1;
+$desertwasp["description"] = "The assignment was to create a 3D vehicle combat game in 2 weeks with vehicle headlights. We made a relatively simple wave based tank survival game featuring an experimental hovercraft. WARNING: SLOW TO LOAD. As in I don't have screenshots other than one of the loading screen because it takes too long to load.";
+$desertwasp["screenshots"] = array(array("img/desertwasp-1.png",800,625));
+$desertwasp["screenshotsscale"] = 0.6;
 $desertwasp["videos"] = false;
 
+$coralcleanup["id"] = "coralcleanup";
+$coralcleanup["title"] = "Coral Clean-Up";
+$coralcleanup["shortdesc"] = "A Tranquil 3D underwater fish game";
+$coralcleanup["course"] = "Game Development I";
+$coralcleanup["started"] = "Fall 2011";
+$coralcleanup["completed"] = "Fall 2011";
+$coralcleanup["contributors"] = array("Anisha Smith", "Jon Brenner", "Ivy Kwan");
+$coralcleanup["sourcehref"] = "http://tate.paphus.com/zip/coralcleanup.zip";
+$coralcleanup["binaryhref"] = "http://tate.paphus.com/bin/coralcleanup.zip";
+$coralcleanup["githref"] = false;
+$coralcleanup["purpose"] = array("Learn The Unity 3 engine and further develop 3D game programming skills.");
+$coralcleanup["skills"] = array("Unity 3");
+$coralcleanup["status"] = "Completed";
+$coralcleanup["requires"] = array("<a href=http://unity3d.com/>Unity 3</a> (For source only)");
+$coralcleanup["description"] = "The assignment was to create a 3D game based on the ideas of \"Tranquility\" and \"Order from Chaos.\" We designed a game in which the player takes on the role of a fish using their ability to spew bubbles to clean up trash in their underwater home. The Unity 3 project is unfortunately somewhat messy at present.";
+$coralcleanup["screenshots"] = array(array("img/coralcleanup-1.png",960,540),array("img/coralcleanup-2.png",960,540),array("img/coralcleanup-3.png",960,540));
+$coralcleanup["screenshotsscale"] = 0.5;
+$coralcleanup["videos"] = false;
 
-$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "desertwasp" => $desertwasp);
+
+$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "desertwasp" => $desertwasp, "coralcleanup" => $coralcleanup);
 
 
 /*    About Me    */
 
 $aboutmeshort = "<center><img src=\"img/profile_pic.jpg\" width=200 height=280/></center><br><br>Hello and welcome to my portfolio site. My name is Tate Larsen and I am currently pursuing a dual degree in Computer Science and Games & Simulation Arts & Science (GSAS) at Rensselaer Polytechnic Institute.";
 
-$aboutmefull = "<center><h4>Personal</h4></center>";
+$aboutmefull = "";
+
+$aboutmefull .= "<center><h4>Personal</h4></center>";
 $aboutmefull .= "<table>";
 $aboutmefull .= "<tr><th align=right>Name:</th><td>Tate Larsen</td></tr>";
 $aboutmefull .= "<tr><th align=right>E-Mail:</th><td>talarsen@qwestoffice.net</td></tr>";
@@ -326,6 +348,8 @@ $aboutmefull .= "<tr><th align=right>Languages Used:</th><td>Perl, Ruby, SQL, LU
 $aboutmefull .= "<tr><th align=right>Version Control:</th><td>Git, Perforce, SVN</td></tr>";
 $aboutmefull .= "<tr><th align=right>Operating Systems:</th><td>ArchLinux, Windows 7</td></tr>";
 $aboutmefull .= "</table>";
+
+$aboutmefull .= "<br><center><img src=img/stormtrooper.jpg /></center>";
 
 
 

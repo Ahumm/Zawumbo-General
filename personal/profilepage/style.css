@@ -1,12 +1,34 @@
 /* High Level */
 
+html {
+	height:100%;
+}
+
 body {
-    background-color: #ffffff;
-    background-image: url('background-gradient.png');
-    background-repeat: repeat-x;
     white-space:nowrap;
-    font: 16px/1.4 "myriad-pro-1", "myriad-pro-2", "Lucida Grande", Sans-Serif;
+    font: 16px/1.4 Arial, Helvetica, Sans-Serif;
     color: #333;
+	margin:0;
+	margin-top:10px;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	height:100%;
+}
+
+.bg-grad {
+	background-color: #696969; /* non-css3 browser support */
+    background-image: -ms-linear-gradient(top left, #696969 0%, #FFFFFF 
+100%); /*IE10*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#696969', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+    background-image: -moz-linear-gradient(top left, #696969 0%, #FFFFFF 
+100%); /*ff3.6+*/
+    background: linear-gradient(-45deg, #696969 0%,#ffffff 100%); /* W3C */
+    background-image: -o-linear-gradient(top left, #696969 0%, #FFFFFF 
+100%); /*opera*/
+    background-image: -webkit-gradient(linear, top 
+left, right bottom, color-stop(0, #696969), color-stop(1, #FFFFFF)); /*Chrome,safari4+*/
+    background-image: -webkit-linear-gradient(top left, #696969 0%, #FFFFFF 
+100%); /*Chrome10+,safari5+*/
 }
 
 p {
