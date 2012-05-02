@@ -1,0 +1,87 @@
+html {
+	height:100%;
+}
+
+body {
+	white-space:nowrap;
+	font:16px/1.4 Arial,Helvetica,Sans-Serif;
+	color:#333;
+	margin:0;
+	margin-top:10px;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	height:100%;
+}
+
+.bg-grad {
+	-color: #696969; /* non-css3 browser support */
+    background-image: -ms-linear-gradient(top left, #696969 0%, #FFFFFF 100%); /*IE10*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#696969', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+    background-image: -moz-linear-gradient(top left, #696969 0%, #FFFFFF 100%); /*ff3.6+*/
+    background: linear-gradient(-45deg, #696969 0%,#ffffff 100%); /* W3C */
+    background-image: -o-linear-gradient(top left, #696969 0%, #FFFFFF 100%); /*opera*/
+    background-image: -webkit-gradient(linear, top left, right bottom, color-stop(0, #696969), color-stop(1, #FFFFFF)); /*Chrome,safari4+*/
+    background-image: -webkit-linear-gradient(top left, #696969 0%, #FFFFFF 100%); /*Chrome10+,safari5+*/
+}
+
+#sitetable {
+    width:100%;
+    border-collapse:collapse;
+}
+#sitetable td {
+}
+#headerleft {
+    height:52px;
+}
+#headerright {
+    height:52px;
+}
+#header {
+    width:600px;
+    height:52px;
+    vertical-align:top;
+}
+#contentleft {
+}
+#contentright {
+}
+#content {
+    width:600px;
+    max-width:600px;
+    text-align:center;
+    vertical-align:top;
+}
+#footerleft {
+}
+#footerright {
+}
+#footer {
+    width:600px;
+    vertical-align:top;
+}
+
+.content-box { 
+	width:620px;
+}
+
+.menu {
+	width:100px;
+}
+
+contentbox {
+	width:600px;
+	max-width:600px;
+	background:url(CENTER_PLACEHOLDER) right repeat-y;
+}
+contentbox:before {
+	display: block;
+    line-height: 0;
+    background: url(TOP_RIGHT_PLACEHOLDER) top right no-repeat;
+    content: url(TOP_LEFT_PLACEHOLDER)
+}
+contentbox:after {
+	display: block;
+    line-height: 0;
+    background: url(BOTTOM_RIGHT_PLACEHOLDER) bottom right no-repeat;
+    content: url(BOTTOM_LEFT_PLACEHOLDER)
+}
