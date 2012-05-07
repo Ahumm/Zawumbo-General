@@ -81,6 +81,31 @@ p {
     padding:0;
     height:28
 }
+#menuentry-left {
+    background-image: url('section-middle.png');
+    background-repeat: repeat-y;
+    padding:0;
+    height:28
+}
+#menuentry-right {
+    background-image: url('section-middle.png');
+    background-repeat: repeat-y;
+    padding:0;
+    height:28
+}
+#menuentry-left:before {
+    background-image: url('menu-end-left-1.png');
+    background-repeat: no-repeat;
+    height: 28px;
+    width:7px;
+    padding:0;
+}
+#menuentry-right:after {
+    background-image: url('menu-end-right-1.png');
+    background-repeat: no-repeat;
+    height: 28px;
+    width:7px;
+}
 #menuright {
     background-image: url('menu-end-right-1.png');
     background-repeat: no-repeat;

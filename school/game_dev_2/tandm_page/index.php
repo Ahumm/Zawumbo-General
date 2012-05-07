@@ -33,6 +33,11 @@ function printPage() {
 	echo "</html>";
 }
 
+//Add a menu item
+function addMenuItem($href, $name) {
+    return "<td id=\"menuentry\"><a class=\"menuitem\" href=\"" . $href . "\" title=\"" . $name . "\">" . $name . "</a></td>";
+}
+
 // Add a box to the page
 function addBox($box_content) {
 	$ret = "";

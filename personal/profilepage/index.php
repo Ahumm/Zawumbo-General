@@ -58,8 +58,13 @@ function unknown() {
 /*    MENU    */
 
 //Add a menu item
-function addMenuItem($href, $name) {
-    return "<td id=\"menuentry\"><a class=\"menuitem\" href=\"" . $href . "\" title=\"" . $name . "\">" . $name . "</a></td>";
+// POSITION :
+//     0 : Left Item
+//     1 : Center Item
+//     2 : RIGHT Item
+function addMenuItem($href, $name, $position = 1) {
+    $menu_position_suffix = ($position == 0) ? "-left" : ((position == 2) ? "-right" : "");
+    return "<td id=\"menuentry" . $menu_position_suffix . "\"><a class=\"menuitem\" href=\"" . $href . "\" title=\"" . $name . "\">" . $name . "</a></td>";
 }
 
 //Add a project menu item
@@ -70,15 +75,15 @@ function addProjectMenuItem($href, $name) {
 //Make the menu
 function makeMenu() {
     $ret = "<table id=\"headertable\"><tr>";
-    $ret .= "<td id=\"menuleft\"></td>";
-    $ret .=  addMenuItem("/", "Home");
+    //$ret .= "<td id=\"menuleft\"></td>";
+    $ret .=  addMenuItem("/", "Home", 0);
     $ret .=  "<td id=\"menuslice\"></td>";
     $ret .=  addMenuItem("/tatelarsenresume.pdf", "R&eacute;sum&eacute;");
     $ret .=  "<td id=\"menuslice\"></td>";
     $ret .=  addMenuItem("/?page=projectlist", "Projects");
     $ret .=  "<td id=\"menuslice\"></td>";
-    $ret .=  addMenuItem("/?page=contact", "About / Contact");
-    $ret .=  "<td id=\"menuright\"></td>";
+    $ret .=  addMenuItem("/?page=contact", "About / Contact", 2);
+    //$ret .=  "<td id=\"menuright\"></td>";
     $ret .= "</tr></table>";
     return $ret;
 }
