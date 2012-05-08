@@ -26,8 +26,16 @@ function printPage() {
 }
 
 //Add a menu item
-function addMenuItem($href, $name) {
-    return "<td id=\"menuentry\"><a class=\"menuitem\" href=\"" . $href . "\" title=\"" . $name . "\">" . $name . "</a></td>";
+function addMenu() {
+	$ret =  "<ul id=\"gradmenu\">";
+	$ret .= "<li id=\"menuhome\"><a href=\"/\"></a></li>";
+	$ret .= "<li id=\"menuproject\"><a href=\"/\"></a></li>";
+	$ret .= "<li id=\"menuimages\"><a href=\"/\"></a></li>";
+	$ret .= "<li id=\"menuvideos\"><a href=\"/\"></a></li>";
+	$ret .= "<li id=\"menuabout\"><a href=\"/\"></a></li>";
+	$ret .= "<li id=\"menudownloads\"><a href=\"/\"></a></li>";
+	$ret .= "</ul>";
+    return $ret;
 }
 
 // Add a box to the page
@@ -44,7 +52,7 @@ $header = "<p>Header Here</p>";
 
 $about_team = "About The Team";
 $about_game = "About The Game";
-$menu = addBox("Menu goes here");
+$menu = addMenu();//addBox("Menu goes here");
 
 /////////////////
 // PAGE CHOICE //

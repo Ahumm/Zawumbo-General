@@ -23,19 +23,55 @@ body.bg-grad {
 }
 
 div.main {
-	width:600px;
+	width:620px;
 	margin:0 auto;
 	overflow:hidden;
 	font-size:13px;
 }
 
 div.menu {
-	width:600px;
+	width:620px;
 	overflow:hidden;
 }
 
+#gradmenu {
+	width:620px;
+	height:33px;
+	background:url(menubar.png) 0px 33px;
+	margin:0px;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding:0;
+	position:relative;
+}
+
+#gradmenu li {
+	margin:0 auto;
+	padding:0;
+	list-style:none;
+	position:absolute;
+	top:0;
+}
+#gradmenu li a {
+	height:33px;
+	display:block;
+}
+#menuhome           { left:0  ; width:101 ; }
+#menuproject     { left:101; width:96 ; }
+#menuimages       { left:198; width:90 ; }
+#menuvideos       { left:288; width:90 ; }
+#menuabout         { left:378; width:90 ; }
+#menudownloads { left:468; width:153; }
+
+#menuhome:hover           { background:transparent url(menubar.png) 0px 0px no-repeat; }
+#menuproject:hover     { background:transparent url(menubar.png) -101px 0px no-repeat; }
+#menuimages:hover       { background:transparent url(menubar.png) -198px 0px no-repeat; }
+#menuvideos:hover       { background:transparent url(menubar.png) -288px 0px no-repeat; }
+#menuabout:hover         { background:transparent url(menubar.png) -378px 0px no-repeat; }
+#menudownloads:hover { background:transparent url(menubar.png) -468px 0px no-repeat; }
+
 div.content {
-	width:600px;
+	width:620px;
 	overflow:hidden;
 }
 
