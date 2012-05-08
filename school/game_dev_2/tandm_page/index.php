@@ -1,18 +1,11 @@
 <?php
 $title = "Tea And Muskets";
-$headerleft = "";
-$header = "";
-$headerright = "";
-$contentleft = "";
 $content = "";
-$contentright = "";
-$footerleft = "";
-$footer = "";
-$footerright = "";
+$menu = "";
 
 // The main print function
 function printPage() {
-	global $title, $headerleft, $header, $headerright, $contentleft, $content, $contentright, $footerleft, $footer, $footerright;
+	global $title, $content, $menu;
 	
 	// Start HTML stuff
 	echo "<html>";
@@ -21,12 +14,11 @@ function printPage() {
 	echo "</head>";
 	echo "<body class=\"bg-grad\">";
 	
-	echo "<table id=\"sitetable\">";
-	echo "<tr><td id=\"headerleft\">" . $headerleft . "</td><td id=\"header\">" . $header . "</td><td id=\"headerright\">" . $headerright . "</td></tr>";
-	echo "<tr><td id=\"contentleft\">" . $contentleft . "</td><td id=\"content\">" . $content . "</td><td id=\"contentright\">" . $contentright . "</td></tr>";
-	echo "<tr><td id=\"footerleft\">" . $fooderleft . "</td><td id=\"footer\">" . $footer . "</td><td id=\"footerright\">" . $footerright . "</td></tr>";
+	echo "<div class=\"main\">";
+	echo "<div class=\"menu\">" . $menu . "</div>";
+	echo "<div class=\"content\">" . $content . "</div>";
 	
-	echo "</table>";
+	echo "</div>"; //main
 	
 	// Close out
 	echo "</body>";
@@ -41,20 +33,18 @@ function addMenuItem($href, $name) {
 // Add a box to the page
 function addBox($box_content) {
 	$ret = "";
-	$ret .= "<contentbox>" . $box_content . "</contentbox>";
+	$ret .= "<div class=\"content_box\">" . $box_content . "</div>";
 	return $ret;
 }
 
 $header = "<p>Header Here</p>";
-$content = "<p>Menu Here</p>";
-$footer = "<p>Footer Here</p>";
 
 
 
 
 $about_team = "About The Team";
 $about_game = "About The Game";
-$menu = "Menu";
+$menu = addBox("Menu goes here");
 
 /////////////////
 // PAGE CHOICE //
@@ -62,7 +52,7 @@ $menu = "Menu";
 
 $page = $_REQUEST["page"];
 
-$content = "<table><td class=\"menu\">" . $menu . "</td><td class=\"content-box\">";
+$content = addBox("CONTENTCONTENTCONTENT");
 
 switch($page) {
 	case "about":
@@ -84,8 +74,6 @@ switch($page) {
 	default:
 		break;
 }
-
-$content .= "</td></table>";
 
 printPage();
 
