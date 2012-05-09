@@ -2,11 +2,18 @@ html {
     height:100%;
 }
 
+p.ju {
+    text-align:justify;
+    text-justify:distribute;
+}
+
 body {
     margin:0;
     white-space:nowrap;
     font-family:"Trebuchet MS",Arial,Helvetica,Sans-Serif;
-    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height:100%
     /*margin-top:10px;*/
     /*height:100%;*/
 }
@@ -22,11 +29,70 @@ body.bg-grad {
     background-image: -webkit-linear-gradient(top left, #696969 0%, #FFFFFF 100%); /*Chrome10+,safari5+*/
 }
 
+div.center {
+    width:700px;
+    margin:0 auto;
+    height:100%;
+}
+
 div.main {
     width:620px;
     margin:0 auto;
-    overflow:hidden;
     font-size:13px;
+    background:#222244;
+    height:100%;
+}
+
+td.right {
+    border-collapse: collapse;
+    border:0;
+    height:100%;
+    width:40;
+    margin:0;
+    padding:0;
+    background: -moz-linear-gradient(left, rgba(34,34,68,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(34,34,68,1)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(34,34,68,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(34,34,68,1) 0%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(34,34,68,1) 0%,rgba(125,185,232,0) 100%); /* IE10+ */
+    background: linear-gradient(left, rgba(34,34,68,1) 0%,rgba(125,185,232,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222244', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+}
+
+td.left {
+    border-collapse: collapse;
+    border:0;
+    height:100%;
+    width:40;
+    margin:0;
+    padding:0;
+    background: -moz-linear-gradient(left, rgba(125,185,232,0) 0%, rgba(34,34,68,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(125,185,232,0)), color-stop(100%,rgba(34,34,68,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(125,185,232,0) 0%,rgba(34,34,68,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(125,185,232,0) 0%,rgba(34,34,68,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(125,185,232,0) 0%,rgba(34,34,68,1) 100%); /* IE10+ */
+    background: linear-gradient(left, rgba(125,185,232,0) 0%,rgba(34,34,68,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#222244',GradientType=1 ); /* IE6-9 */
+}
+
+td.middle {
+    border-collapse: collapse;
+    border:0;
+    height:100%;
+}
+
+table.sitetable, #borderless {
+    border-collapse: collapse;
+    border:0;
+    padding:0;
+    margin:0;
+    height:100%;
+}
+
+table.centered {
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
 }
 
 div.menu {
@@ -43,41 +109,38 @@ div.menu {
     margin-bottom:10px;
     padding:0;
     position:relative;
-	width:620px;
-	margin:0 auto;
-	overflow:hidden;
-	font-size:13px;
-    background:#222244;
-    height:100%;
 }
 
 div.header {
     width:620px;
-	overflow:hidden;
+    overflow:hidden;
     height: 120px;
 }
 
 div.logo {
     width:620px;
     height:70px;
-    overflow:hidden;
+    margin:0;
+    padding:0;
+    display:block;
+    background:url(tandm_logo.png);
 }
 
 div.menu {
-	width:620px;
+    width:620px;
     height:50px;
-	overflow:hidden;
+    overflow:hidden;
 }
 
 #gradmenu {
-	width:620px;
-	height:33px;
-	background:url(menubar.png) 0px 33px;
-	margin:0px;
-	margin-top:7px;
-	margin-bottom:10px;
-	padding:0;
-	position:relative;
+    width:620px;
+    height:33px;
+    background:url(menubar.png) 0px 33px;
+    margin:0px;
+    margin-top:7px;
+    margin-bottom:10px;
+    padding:0;
+    position:relative;
 }
 
 #gradmenu li {
@@ -105,9 +168,16 @@ div.menu {
 #menuabout:hover         { background:transparent url(menubar.png) -378px 0px no-repeat; }
 #menudownloads:hover { background:transparent url(menubar.png) -468px 0px no-repeat; }
 
+#menuhome:active           { background:transparent url(menubar.png) 0px 0px no-repeat; }
+#menuproject:active     { background:transparent url(menubar.png) -101px 0px no-repeat; }
+#menuimages:active       { background:transparent url(menubar.png) -198px 0px no-repeat; }
+#menuvideos:active       { background:transparent url(menubar.png) -288px 0px no-repeat; }
+#menuabout:active         { background:transparent url(menubar.png) -378px 0px no-repeat; }
+#menudownloads:active { background:transparent url(menubar.png) -468px 0px no-repeat; }
+
 div.content {
     width:620px;
-    overflow:hidden;
+    height:100%;
 }
 
 div.content_box {
