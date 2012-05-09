@@ -133,6 +133,8 @@ $team['tom']['personalsite']['link'] = "http://paphus.com";
 $team['tom']['contributions'] = "Maps and Networking Functionality";
 
 $team['chap']['name'] = "Michael \"Chap\" Gruar";
+$team['chap']['personalsite']['name'] = "Mgruar.com";
+$team['chap']['personalsite']['link'] = "http://mgruar.com";
 $team['chap']['contributions'] = "Unit and Town Creation";
 
 $team['tate']['name'] = "Tate Larsen";
@@ -147,8 +149,7 @@ $team['nate']['name'] = "Nathan West";
 $team['nate']['contributions'] = "Unit Pathfinding";
 
 
-$about_team = "About The Team";
-$about_game = "About The Game";
+$about_game = "<p class=\"ju\">In Tea and Muskets players control either the British forces or Revere. If playing as Revere, their goal is to travel from town to town to spread the word of the impending arrival of the British. Meanwhile the British are attempting to prevent Revere from reaching those towns. The British are capable of fielding vastly superior numbers but must send any orders via messenger and must therefore make more large, sweeping movements. In addition, while both players know where towns are located, the British don't know the lay of the land the way Revere does and therefore cannot see terrain they have yet to explore while Revere can.</p>";
 $about_short = "<p class=\"ju\">Tea and Muskets is an asymmetric multiplayer Realtime Strategy game where players play as either the British or Revere in a creative recreation of Revere's ride.</p>";
 $menu = addMenu();
 
