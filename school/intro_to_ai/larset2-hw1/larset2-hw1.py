@@ -75,7 +75,9 @@ class board:
             a, b = e_i, (e_i - 1)
             n_s[a], n_s[b] = n_s[b], n_s[a]
             pos.set_board(n_s, self.move_count + 1, self)
-            possible_states.append(pos)
+            # Ignore previous state
+            if pos != self.last_board:
+                possible_states.append(pos)
         if(e_i_x < 2):
             pos = board()
             n_s = list(self.state)
@@ -83,7 +85,9 @@ class board:
             a, b = e_i, (e_i + 1)
             n_s[a], n_s[b] = n_s[b], n_s[a]
             pos.set_board(n_s, self.move_count + 1, self)
-            possible_states.append(pos)
+            # Ignore previous state
+            if pos != self.last_board:
+                possible_states.append(pos)
         if(e_i_y > 0):
             pos = board()
             n_s = list(self.state)
@@ -91,7 +95,9 @@ class board:
             a, b = e_i, (e_i - 3)
             n_s[a], n_s[b] = n_s[b], n_s[a]
             pos.set_board(n_s, self.move_count + 1, self)
-            possible_states.append(pos)
+            # Ignore previous state
+            if pos != self.last_board:
+                possible_states.append(pos)
         if(e_i_y < 2):
             pos = board()
             n_s = list(self.state)
@@ -99,7 +105,9 @@ class board:
             a, b = e_i, (e_i + 3)
             n_s[a], n_s[b] = n_s[b], n_s[a]
             pos.set_board(n_s, self.move_count + 1, self)
-            possible_states.append(pos)
+            # Ignore previous state
+            if pos != self.last_board:
+                possible_states.append(pos)
         return possible_states
     
     # Calculate the Manhattan Distance between two board states
