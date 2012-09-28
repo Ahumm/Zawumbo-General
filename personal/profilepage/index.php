@@ -9,7 +9,6 @@ $contentright = "";
 $footerleft = "";
 $footer = "";
 $footerright = "";
-
 //Main function
 function printPage() {
     //Variable declaration
@@ -73,7 +72,7 @@ function makeMenu() {
     $ret .= "<td id=\"menuleft\"></td>";
     $ret .=  addMenuItem("/", "Home");
     $ret .=  "<td id=\"menuslice\"></td>";
-    $ret .=  addMenuItem("/tatelarsenresume.pdf", "R&eacute;sum&eacute;");
+    $ret .=  addMenuItem("/tate_larsen_resume.pdf", "R&eacute;sum&eacute;");
     $ret .=  "<td id=\"menuslice\"></td>";
     $ret .=  addMenuItem("/?page=projectlist", "Projects");
     $ret .=  "<td id=\"menuslice\"></td>";
@@ -196,11 +195,20 @@ function addFullProject($project) {
     $ret .= "<b>Status:</b> " . $project["status"] . "<br>";
     $ret .= "<b>Contributors:</b> " . commalist($project["contributors"]) . "<br>";
     $ret .= "<b>Skills:</b> " . commalist($project["skills"]) . "<br>";
+    
+    if($project["contribution"]) {
+        $ret .= "<b>Contribution:</b> " . commalist($project["contribution"]) . "<br>";
+    }
+    
     if($project["requires"]) {
-	$ret .= "<b>Requires:</b> " . commalist($project["requires"]) . "<br>";
+        $ret .= "<b>Requires:</b> " . commalist($project["requires"]) . "<br>";
     }
     $ret .= "<b>Full Description:</b> " . $project["description"] . "<br>";
 
+    if($project["note"]) {
+        $ret .= "<b>Note:</b> " . $project["note"] . "<br>";
+    }
+    
     $ret .= "<br><br>";
 
     $ret .= makeProjectMenu($project, false);
@@ -225,10 +233,11 @@ $wold["started"] = "Fall 2010";
 $wold["completed"] = false;
 $wold["contributors"] = array("<a href=http://paphus.com>Tom Alexander</a>", "Michael \"Chap\" Gruar");
 $wold["dochref"] = "http://wolddoc.paphus.com/";
-$wold["sourcehref"] = "http://tate.paphus.com/src/wold.zip";
-$wold["binaryhref"] = "http://tate.paphus.com/bin/wold.zip";
+$wold["sourcehref"] = "http://tate.paphus.com/src/wold_src.zip";
+$wold["binaryhref"] = "http://tate.paphus.com/bin/wold_bin.zip";
 $wold["githref"] = false;
 $wold["purpose"] = array("Learn and Implement Perlin Noise", "Gain Experience working with a team");
+$wold["contribution"] = array("Terrain Generation");
 $wold["skills"] = array("CMake", "Git", "Doxygen", "Noise Algorithms");
 $wold["requires"] = false;
 $wold["status"] = "Still in the early stages with working OBJ model loading, camera movement functions, limited height map generation, lighting, and vertex buffer objects. Temporarily on hiatus.";
@@ -286,10 +295,12 @@ $desertwasp["sourcehref"] = "https://github.com/Ahumm/GD1P3/zipball/master";
 $desertwasp["binaryhref"] = false;
 $desertwasp["githref"] = "https://github.com/Ahumm/GD1P3/";
 $desertwasp["purpose"] = array("Learn Panda3D and 3D game programming basics.");
+$desertwasp["contribution"] = array("Main Game Logic", "Player Controls");
 $desertwasp["skills"] = array("Git", "Python", "Panda3D");
 $desertwasp["status"] = "Completed";
 $desertwasp["requires"] = array("<a href=http://python.org/>Python 2.7</a>", "<a href=http://www.panda3d.org/>Panda3D</a>");
 $desertwasp["description"] = "The assignment was to create a 3D vehicle combat game in 2 weeks with vehicle headlights. We made a relatively simple wave based tank survival game featuring an experimental hovercraft. WARNING: SLOW TO LOAD. As in I don't have screenshots other than one of the loading screen because it takes too long to load.";
+$desertwasp["note"] = "Due to the way in which the explosions were implemented by a teammate, the game takes several minutes to load. I have primarily left it here as a reference.";
 $desertwasp["screenshots"] = array(array("img/desertwasp-1.png",800,625));
 $desertwasp["screenshotsscale"] = 0.6;
 $desertwasp["videos"] = false;
@@ -301,20 +312,42 @@ $coralcleanup["course"] = "Game Development I";
 $coralcleanup["started"] = "Fall 2011";
 $coralcleanup["completed"] = "Fall 2011";
 $coralcleanup["contributors"] = array("Anisha Smith", "Jon Brenner", "Ivy Kwan");
-$coralcleanup["sourcehref"] = "http://tate.paphus.com/zip/coralcleanup.zip";
-$coralcleanup["binaryhref"] = "http://tate.paphus.com/bin/coralcleanup.zip";
+$coralcleanup["sourcehref"] = "http://tate.paphus.com/src/coralcleanup_src.zip";
+$coralcleanup["binaryhref"] = "http://tate.paphus.com/bin/coralcleanup_bin.zip";
 $coralcleanup["githref"] = false;
-$coralcleanup["purpose"] = array("Learn The Unity 3 engine and further develop 3D game programming skills.");
-$coralcleanup["skills"] = array("Unity 3");
+$coralcleanup["purpose"] = array("Learn The Unity 3D engine and further develop 3D game programming skills.");
+$coralcleanup["contribution"] = array("Random object generation", "Map Creation", "Misc Scripting");
+$coralcleanup["skills"] = array("C#", "Unity 3D");
 $coralcleanup["status"] = "Completed";
-$coralcleanup["requires"] = array("<a href=http://unity3d.com/>Unity 3</a> (For source only)");
+$coralcleanup["requires"] = array("<a href=http://unity3d.com/>Unity 3D</a> (For source only)");
 $coralcleanup["description"] = "The assignment was to create a 3D game based on the ideas of \"Tranquility\" and \"Order from Chaos.\" We designed a game in which the player takes on the role of a fish using their ability to spew bubbles to clean up trash in their underwater home. The Unity 3 project is unfortunately somewhat messy at present.";
 $coralcleanup["screenshots"] = array(array("img/coralcleanup-1.png",960,540),array("img/coralcleanup-2.png",960,540),array("img/coralcleanup-3.png",960,540));
 $coralcleanup["screenshotsscale"] = 0.5;
 $coralcleanup["videos"] = false;
 
+$teaandmuskets["id"] = "teaandmuskets";
+$teaandmuskets["title"] = "Tea and Muskets";
+$teaandmuskets["shortdesc"] = "An A-symmetric Real Time Strategy Game";
+$teaandmuskets["course"] = "Game Development II";
+$teaandmuskets["started"] = "Spring 2012";
+$teaandmuskets["completed"] = "Spring 2012";
+$teaandmuskets["contributors"] = array("<a href=http://paphus.com>Tom Alexander</a>", "<a href=http://mgruar.com>Michael \"Chap\" Gruar</a>", "Peter Skinner", "Nathan West");
+$teaandmuskets["sourcehref"] = "http://tate.paphus.com/src/teaandmuskets_src.zip";
+$teaandmuskets["binaryhref"] = "http://tate.paphus.com/bin/teaandmuskets_bin.zip";
+$teaandmuskets["githref"] = false;
+$teaandmuskets["purpose"] = array("Further develop 3D game programming skills.");
+$teaandmuskets["contribution"] = array("Menus", "GUI", "Fog of War", "Player Controls");
+$teaandmuskets["skills"] = array("C#", "Unity 3D");
+$teaandmuskets["status"] = "Completed";
+$teaandmuskets["requires"] = array("<a href=http://unity3d.com/>Unity 3D</a> (For source only)");
+$teaandmuskets["description"] = "Tea and Muskets is an A-Symmetric RTS set during the Revolutionary War in which players control either the British forces or Revere. If playing as Revere, their goal is to travel from town to town to spread the word of the impending arrival of the British. Meanwhile the British are attempting to prevent Revere from reaching those towns. The British are capable of fielding vastly superior numbers but must send any orders via messenger and must therefore make more large, sweeping movements. In addition, while both players know where towns are located, the British don't know the lay of the land the way Revere does and therefore cannot see terrain they have yet to explore while Revere can.";
+$teaandmuskets["screenshots"] = array(array("img/teaandmuskets-1.png",960,540),array("img/teaandmuskets-2.png",960,540),array("img/teaandmuskets-3.png",960,540));
+$teaandmuskets["note"] = "Tea and Muskets also has its own page located <a href=http://tandm.ahumm.net/>here</a> (Created by me as part of the assignment, has compatibilty issues with Internet Explorer though it is still viewable with IE9).";
+$teaandmuskets["screenshotsscale"] = 0.5;
+$teaandmuskets["videos"] = false;
 
-$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "desertwasp" => $desertwasp, "coralcleanup" => $coralcleanup);
+
+$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "desertwasp" => $desertwasp, "coralcleanup" => $coralcleanup, "teaandmuskets" => $teaandmuskets);
 
 
 /*    About Me    */
@@ -326,7 +359,7 @@ $aboutmefull = "";
 $aboutmefull .= "<center><h4>Personal</h4></center>";
 $aboutmefull .= "<table>";
 $aboutmefull .= "<tr><th align=right>Name:</th><td>Tate Larsen</td></tr>";
-$aboutmefull .= "<tr><th align=right>E-Mail:</th><td>talarsen@qwestoffice.net</td></tr>";
+$aboutmefull .= "<tr><th align=right>E-Mail:</th><td>tate.larsen@ahumm.net</td></tr>";
 $aboutmefull .= "<tr><th align=right>Current Address:</th><td>16 Belle Ave Troy, NY 12180</td></tr>";
 $aboutmefull .= "<tr><th align=right>Permenant Address:</th><td>9845 NE 27th st Bellevue, WA, 98004</td></tr>";
 $aboutmefull .= "<tr><th align=right>Phone:</th><td>(425) 283-3847</td></tr>";
@@ -343,8 +376,8 @@ $aboutmefull .= "</table>";
 $aboutmefull .= "<center><h4>Programming</h4></center>";
 $aboutmefull .= "<table>";
 $aboutmefull .= "<tr><th align=right>Editor:</th><td>Emacs(Linux), Notepad++(Windows)</td></tr>";
-$aboutmefull .= "<tr><th align=right>Languages Known:</th><td>C++, C#, C, Java, Lisp, PHP, Python</td></tr>";
-$aboutmefull .= "<tr><th align=right>Languages Used:</th><td>Perl, Ruby, SQL, LUA</td></tr>";
+$aboutmefull .= "<tr><th align=right>Languages Known Well:</th><td>C++, C, Lisp, PHP, Python</td></tr>";
+$aboutmefull .= "<tr><th align=right>Languages Used:</th><td>C#, Java, Perl, Ruby, SQL, LUA</td></tr>";
 $aboutmefull .= "<tr><th align=right>Version Control:</th><td>Git, Perforce, SVN</td></tr>";
 $aboutmefull .= "<tr><th align=right>Operating Systems:</th><td>ArchLinux, Windows 7</td></tr>";
 $aboutmefull .= "</table>";
@@ -356,7 +389,6 @@ $aboutmefull .= "<br><center><img src=img/stormtrooper.jpg /></center>";
 /*    Contact Info    */
 
 $contactinfo = "";
-
 
 
 /*    Page Logic    */
