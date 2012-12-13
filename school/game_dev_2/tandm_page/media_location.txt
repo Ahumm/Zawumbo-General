@@ -1,0 +1,9 @@
+All media for the TandM page can be found in the .zip file located at:
+
+http://www.misc.ahumm.net/game_dev_2/
+
+
+That includes:
+    Three Screenshots (Uncompressed and in a .zip file)
+    Two Videos        (Uncompressed and in a .zip file)
+    The tandm_logo as a .psd file
