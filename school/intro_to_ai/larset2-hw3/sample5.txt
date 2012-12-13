@@ -1,0 +1,8 @@
+X,X,P,X,X,P,X,X
+P,X,X,X,G,X,X,X
+X,X,P,X,W,X,P,X
+X,X,X,P,X,X,X,P
+P,X,P,X,X,P,X,X
+X,X,X,X,P,X,X,X
+X,P,X,P,X,X,P,X
+X,X,X,X,X,P,X,X

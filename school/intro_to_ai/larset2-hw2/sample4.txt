@@ -1,0 +1,6 @@
+X,P,X,X,X,X
+G,X,X,P,X,X
+X,W,X,P,X,P
+X,P,X,X,X,X
+P,X,P,X,P,X
+X,X,X,X,X,P
