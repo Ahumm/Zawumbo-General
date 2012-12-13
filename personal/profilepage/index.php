@@ -284,6 +284,7 @@ $bookofquakes["screenshots"] = array(array("img/bookofquakes-1.png",960,549),arr
 $bookofquakes["screenshotsscale"] = 0.5;
 $bookofquakes["videos"] = false;
 
+/*
 $desertwasp["id"] = "desertwasp";
 $desertwasp["title"] = "Desert W.A.S.P.";
 $desertwasp["shortdesc"] = "A vehicle combat game";
@@ -304,6 +305,7 @@ $desertwasp["note"] = "Due to the way in which the explosions were implemented b
 $desertwasp["screenshots"] = array(array("img/desertwasp-1.png",800,625));
 $desertwasp["screenshotsscale"] = 0.6;
 $desertwasp["videos"] = false;
+*/
 
 $coralcleanup["id"] = "coralcleanup";
 $coralcleanup["title"] = "Coral Clean-Up";
@@ -347,7 +349,7 @@ $teaandmuskets["screenshotsscale"] = 0.5;
 $teaandmuskets["videos"] = false;
 
 
-$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "desertwasp" => $desertwasp, "coralcleanup" => $coralcleanup, "teaandmuskets" => $teaandmuskets);
+$projects = array("wold" => $wold, "tumorraider" => $tumorraider, "bookofquakes" => $bookofquakes, "coralcleanup" => $coralcleanup, "teaandmuskets" => $teaandmuskets);
 
 
 /*    About Me    */
