@@ -1,0 +1,28 @@
+@startuml
+actor Miro
+participant AudioRenderer
+participant EffectApplier
+participant BasicVisualEffect
+participant BasicAnalyzer
+
+Miro -> EffectApplier : listen_loop()
+EffectApplier -> AudioRenderer : check()
+EffectApplier <-- AudioRenderer : STOPPED
+
+Miro -> AudioRenderer : play()
+
+EffectApplier -> AudioRenderer : check()
+EffectApplier <-- AudioRenderer : PLAYING
+
+EffectApplier -> BasicVisualEffect : process(AudioBuffer)
+BasicVisualEffect -> BasicAnalyzer : analyze(AudioBuffer)
+BasicVisualEffect <-- BasicAnalyzer : analyze() finished\nAnalyzedBuffer
+BasicVisualEffect -> BasicVisualEffect : render(AnalyzedBuffer)
+EffectApplier <-- BasicVisualEffect : process() finished
+
+Miro -> AudioRenderer : stop()
+EffectApplier -> AudioRenderer : check()
+EffectApplier <-- AudioRenderer : STOPPED
+EffectApplier --> Miro : listen_loop() stops
+
+@enduml

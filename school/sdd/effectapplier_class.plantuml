@@ -1,0 +1,52 @@
+@startuml
+
+skinparam shadowing false
+
+package MiroSource {
+   class AudioRenderer
+}
+
+class EffectApplier {
+    +effect : Effect
+    +listen_loop()
+    -check()
+}
+
+abstract Analyzer {
+    +analyze(buffer : byte[]) : AnalyzedBuffer
+    +rebuild(buffer : AnalyzedBuffer) : byte[]
+}
+class BasicAnalyzer {
+    -FFT()
+    -iFFT()
+}
+
+abstract Effect {
+    +analyzer : Analyzer 
+    +process(buffer : byte[]) : void
+}
+class BasicVisualEffect {
+    -render(buffer : AnalyzedBuffer) : void
+}
+class BasicAudioEffect {
+    +target_file
+    -modify(buffer : AnalyzedBuffer)
+    -write(buffer : byte[])
+}
+
+class AnalyzedBuffer {
+    +bands : float[][]
+    +band_width : float[]
+    +time_resolution : float
+}
+
+Effect "1" o-- "1" Analyzer : has
+EffectApplier "1" o-- "1" Effect : has
+
+EffectApplier "1" --> "1" AudioRenderer : listens to
+
+BasicAnalyzer --|> Analyzer : implements
+BasicVisualEffect --|> Effect : implements
+BasicAudioEffect --|> Effect : implements
+
+@enduml
