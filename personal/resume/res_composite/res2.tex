@@ -1,0 +1,52 @@
+% ---------- %
+% Doc Config %
+% ---------- %
+
+\documentclass[a4paper,11pt]{awesome-cv}
+
+\geometry{left=2cm, top=1.5cm, right=2cm, bottom=2cm, footskip=.5cm} % configure page margins
+
+\fontdir[fonts/] % specify location of required fonts
+
+\colorlet{awesome}{awesome-skyblue} % color for highlights
+
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad} % set social separator to pipe (|)
+
+\makecvfooter{\today}{Tate A. Larsen~~~·~~~R\'esum\'e}{\thepage}
+
+% ------------- %
+% Personal Info %
+% ------------- %
+
+\name{Tate A.}{Larsen}
+\address{535 Front Ln, Mountain View, CA 94041}
+\mobile{(425) 283-3847}
+\email{tate.larsen@ahumm.net}
+\github{ahumm}
+\linkedin{tate-larsen}
+
+\position{Software Engineer{\enskip\cdotp\enskip}Full-Stack}
+
+% -------- %
+% Document %
+% -------- %
+
+\begin{document}
+
+\makecvheader % print the header
+
+% include subsections
+\input{sections/experience.tex}
+\input{sections/education.tex}
+%\input{sections/skills.tex}
+
+\end{document}
+
+%\section{SKILLS}
+%    {\bf Proficient Languages:} Java, Ruby, Python, SQL \\
+%    {\bf Competent Languages:} C++, C, JavaScript, Perl, PHP, LUA \\
+%    {\bf Frameworks:} Ruby on Rails, Hadoop / Hive
+%    {\bf Version Control:} Git, SVN \\
+%    {\bf Build Systems:} GNU make, Ant, Gradle \\
+%    {\bf Operating Systems:} Linux, Windows, OSX
+                         
